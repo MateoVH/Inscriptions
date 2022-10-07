@@ -9,7 +9,7 @@ namespace Inscriptions.API.Data.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]
-        [Display(Name = "Cédula")]
+        [Display(Name = "Nro. de Documento")]
         [MaxLength(20, ErrorMessage = "El campo {0} sólo puede contener {1} caracteres de longitud.")]
         public string Cedula { get; set; }
 
@@ -42,5 +42,12 @@ namespace Inscriptions.API.Data.Entities
         public DateTime? CreationDate { get; set; }
 
         public bool HasInscription { get; set; }
+
+        [MaxLength(50, ErrorMessage = "El campo {0} sólo puede contener {1} caracteres de longitud.")]
+        public string FileName { get; set; }
+
+        [MaxLength(300, ErrorMessage = "El campo {0} sólo puede contener {1} caracteres de longitud.")]
+        public string FilePath { get; set; }
+
     }
 }

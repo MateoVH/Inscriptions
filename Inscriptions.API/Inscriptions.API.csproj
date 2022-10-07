@@ -10,4 +10,8 @@
     <PackageReference Include="Vereyon.Web.FlashMessage" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\fotos\" />
+  </ItemGroup>
+
 </Project>

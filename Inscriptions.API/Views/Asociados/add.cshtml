@@ -1,4 +1,5 @@
 ﻿@model Inscriptions.API.Data.Entities.Asociado
+
 <flash dismissable="true" bootstrap-version="4" />
 
 <head>
@@ -17,9 +18,9 @@
     </style>
 </head>
 
-<img src="~/images/image.jpg" style="height:350;width:300px" />
-<h2 style="font-size:30px">
-    <strong>Si quieres postularte como Delegado de Fedehaceb, por favor regístrate para el Curso Virtual en Economía Solidaria, diligenciando los siguientes datos:</strong>
+<img src="~/images/image.jpg" style="height:390px;width:400px" />
+<h2 style="font-size:22px">
+    <strong>Si quieres postularte como aspirante a Delegado de Fedehaceb, debes digitar tu número de documento de identidad y luego hacer clic en el botón Validar:</strong>
 </h2>
 
 
@@ -29,13 +30,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <br />
             <div class="form-group">
-                <label asp-for="Cedula" class="control-label" style="font-weight:bold;">Nro. Documento</label>
+                <label asp-for="Cedula" class="control-label" style="font-weight:bold;font-size:medium;">Nro. Documento</label>
                 <input asp-for="Cedula" class="form-control smfont" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
             <div class="modal-footer">
+                <button type="submit" style="font-size:15px" class="btn btn-sm btn-warning"><i class="fal fa-save"></i> Verificar</button>
                 <button type="button" style="font-size:15px" class="btn btn-sm btn-info" onclick="window.location='https://fedehaceb.com.co/';"><i class="fal fa-ban"></i> Salir</button>
-                <button type="submit" style="font-size:15px" class="btn btn-sm btn-warning"><i class="fal fa-save"></i> Guardar</button>
             </div>
         </form>
     </div>

@@ -1,4 +1,5 @@
-﻿@model Inscriptions.API.Data.Entities.Asociado
+﻿@model Inscriptions.API.Models.AddInscriptionViewModel
+
 <flash dismissable="true" bootstrap-version="4" />
 
 <head>
@@ -18,22 +19,86 @@
     </style>
 </head>
 
-<img src="~/images/image.jpg" style="height:350;width:300px" />
+<img src="~/images/image.jpg" style="height:350px;width:300px" />
 
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Confirm2" enctype="multipart/form-data">
+        <form id="Form1" asp-action="Confirm2" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <p style="font-size:20px"> <strong>Estimado Asociado: </strong> @Model.NombreCompleto</p>
             <p style="font-size:20px"> <strong>Empresa: </strong>@Model.Empresa</p>
             <p style="font-size:20px"> <strong>Zona Electoral: </strong>@Model.Zona</p>
-            <p style="font-size:20px">Para confirmar la inscripción como aspirante a Delegado del Fondo de Empleados de Industrias Haceb “Fedehaceb”, por favor haga clic en el botón Aceptar.</p>
+            <p style="font-size:20px">Para confirmar la inscripción como aspirante a Delegado del Fondo de Empleados de Industrias Haceb “Fedehaceb”, por favor adjunte una Fotografía tipo documento y haga clic en el botón Aceptar.</p>
+
             <div class="form-group">
+                <label class="control-label">Buscar Fotografía:</label>
+                <input id="fileAttachment" asp-for="ImageFile" class="form-control" type="file" accept="image/*" />
+            </div>
+
+            <div class="form-group">
+                <input id="btnSave" onclick='return btnSave();' style="font-size:15px" type="submit" value="Aceptar" class="btn btn-sm btn-warning" />
                 <a asp-action="add" style="font-size:15px" class="btn btn-sm btn-info"><i class="fal fa-ban">Cancelar</i></a>
-                <input style="font-size:15px" type="submit" value="Aceptar" class="btn btn-sm btn-warning" />
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(document).on("keydown", "input", function (e) {
+                if (e.which == 13) e.preventDefault();
+            });
+        });
+
+        $(document).ready(function () {
+
+            document.getElementById('Form1').onsubmit = function () {
+                return validForm();
+            };
+
+        });
+
+        function btnSave() {
+            if (!validForm())
+                return false;
+        }
+
+        function validForm() {
+            //alert('1');
+            //var fileAtt = document.getElementById("fileAttachment");
+            //var filesAtt = fileAtt.files;
+
+            //if (filesAtt[0] != null) {
+            //    alert('2');
+            //    var fileName = fileAtt.value.toLowerCase();
+            //    var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+            //    //alert(ext);
+            //    if (ext === "jpg" || ext === "png" || ext === "jpeg") {
+
+            //    } else {
+            //        alert('Error: Solo se permiten adjuntar archivos tipo imagen con extensión .png ó jpg. Verifique por favor');
+            //        return false;
+            //    }
+            //}else{
+            //    alert('3');
+            //    return true;
+            //}
+
+            if (document.getElementById("fileAttachment").files.length == 0) {
+                alert('Error: Solo se permiten adjuntar archivos tipo imagen con extensión .png ó jpg. Verifique por favor');
+                return false;
+            }else{
+                return true;
+            }
+    }
+
+    </script>
+}

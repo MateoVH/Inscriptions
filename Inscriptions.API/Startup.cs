@@ -58,7 +58,6 @@ namespace Inscriptions.API
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
@@ -66,6 +65,8 @@ namespace Inscriptions.API
                     name: "default",
                     template: "{controller=Asociados}/{action=add}/{id?}");
             });
+
+            app.UseCookiePolicy();
         }
     }
 }
