@@ -1,0 +1,39 @@
+﻿@model Inscriptions.API.Data.Entities.Asociado
+<flash dismissable="true" bootstrap-version="4" />
+
+<head>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            text
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<img src="~/images/image.jpg" style="height:350;width:300px" />
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Confirm2" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <p style="font-size:20px"> <strong>Estimado Asociado: </strong> @Model.NombreCompleto</p>
+            <p style="font-size:20px"> <strong>Empresa: </strong>@Model.Empresa</p>
+            <p style="font-size:20px"> <strong>Zona Electoral: </strong>@Model.Zona</p>
+            <p style="font-size:20px">Para confirmar la inscripción como aspirante a Delegado del Fondo de Empleados de Industrias Haceb “Fedehaceb”, por favor haga clic en el botón Aceptar.</p>
+            <div class="form-group">
+                <a asp-action="add" style="font-size:15px" class="btn btn-sm btn-info"><i class="fal fa-ban">Cancelar</i></a>
+                <input style="font-size:15px" type="submit" value="Aceptar" class="btn btn-sm btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
